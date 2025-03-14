@@ -71,7 +71,7 @@ alwaysApply: false
 ## 5. 画面仕様
 
 - 各画面のデザインやレイアウト、遷移図を記載。
-- 画面間の動作フローやユーザーインターフェース（UI）の詳細も含めます[1](mdc:https:/biz.moneyforward.com/work-efficiency/basic/9680)[3](mdc:https:/imitsu.jp/matome/app-developer/9916291271860790)[6](mdc:https:/note.com/tanabemg/n/na2db89a5cbda)。
+- 画面間の動作フローやユーザーインターフェース（UI）の詳細も含めますtps://biz.moneyforward.com/work-efficiency/basic/9680/)[3](mdc:https:/imitsu.jp/matome/app-developer/9916291271860790)https://note.com/tanabemg/n/na2db89a5cbda)。
 
 ## 6. 技術的な詳細
 
@@ -115,20 +115,52 @@ CREATE TABLE problems (
 );
 ```
 
+### 記事関連テーブル
+
 ```sql
-CREATE TABLE article (
-  article_id UUID PRIMARY KEY,
-  status VARCHAR(20) CHECK (status IN ('draft', 'publish', 'private', 'future')),
-  base_language CHAR(2) NOT NULL,
-  target_language CHAR(2) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  base_text TEXT NOT NULL,
-  target_text TEXT NOT NULL,
-  difficulty_level SMALLINT CHECK (difficulty_level BETWEEN 1 AND 5),
-  last_accessed TIMESTAMP
+-- カテゴリーのENUM型定義
+CREATE TYPE news_category AS ENUM (
+    'world',
+    'business',
+    'technology',
+    'entertainment',
+    'sports',
+    'science',
+    'health'
 );
 
+-- 記事テーブル
+CREATE TABLE articles (
+    article_id UUID PRY KEY,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) CHECK (statu ('draft', 'publish', 'private', 'future')),
+    category news_categNOT NULL,  -- ENUMを使用
+    base_language CHAR(2) NOT NULL,
+    target_language CHAR(2) NOT NULL,
+    base_text TEXT NOT NULL,
+    target_text TEXT NOT NULL,
+    important_words JSONB,
+    grammar_highlights JSONB,
+    is_ai_generated BOOLEAN DEFAULT false,
+    source_url JSONB,  -- JSONB型に変更（複数のURLを保存）
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    metadata JSONB
+);
+
+CREATE TABLE tags (
+    tag_id UUID PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE article_tags (
+    article_id UUID,
+    tag_id UUID,
+    PRIMARY KEY (article_id, tag_id),
+    FOREIGN KEY (article_id) REFERENCES articles(article_id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE CASCADE
+);
 ```
 
 - 入出力データの形式や外部システムとの連携方法も明記[4](mdc:https:/system-kanji.com/posts/app-development-specifications)[6](mdc:https:/note.com/tanabemg/n/na2db89a5cbda)。

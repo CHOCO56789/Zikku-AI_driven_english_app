@@ -1,19 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ArticlePreview } from '@/types/articles'
 
-interface NewsCardProps {
-    id?: string;  // 記事ID（オプション）
-    imageUrl: string;
-    title: string;
-    description: string;
-    author: string;
-}
-
-export default function NewsCard({ id = "1", imageUrl, title, description, author }: NewsCardProps) {
+export default function NewsCard({ id , imageUrl, title, description, author , createdAt}: ArticlePreview) {
     return (
         <Link 
             href={`/library/article/${id}`} 
-            className="block overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="block overflow-hidden rounded-lg bg-white outline outline-1 outline-gray-200 hover:shadow-lg transition-shadow duration-300"
         >
             <div className="relative h-48 w-full">
                 <Image

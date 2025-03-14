@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import NewsCard from '@/components/NewsCard'
 import PromptInput from '@/components/propmt_input'
+import TestComponent from '@/components/TestComponent'
 
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Nori-study-english",
-  description: "Nori-study-english",
+  title: "Pattto",
+  description: "Pattto",
 }
 
 export default async function Page() {
@@ -24,6 +25,7 @@ export default async function Page() {
         flex flex-col gap-4">
       <h1 className="text-3xl pb-8">どんな記事を作成しますか？</h1>
       <PromptInput />
+      <TestComponent />
     </div>
   );
 } 
