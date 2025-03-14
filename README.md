@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#　開発中
 
-## Getting Started
+# Pattto - AI 駆動型英語ニュースリーディングアプリ
 
-First, run the development server:
+## プロジェクトのきっかけ
+
+LLM ワークショップを受講したことをきっかけに、LangChain と LLM を活用したアプリの開発を研究テーマとして現在まで取り組んでいる。
+現在、研究が一旦落ち着いたことをきっかけに、アプリ開発への興味が湧いた。JavaScript,TypeScript,React を学習し、実践的なアプリを作る練習として、個人的に
+利用したいアプリを開発中。
+
+## プロジェクト概要
+
+Pattto は、英語学習者のための AI 駆動型ニュースリーディングアプリケーションです。難しい英語ニュースを、学習者のレベルに合わせて最適化し、効率的な英語学習をサポートします。
+
+### 技術スタック
+
+- フロントエンド: Next.js, TypeScript
+- バックエンド: Next.js API Routes
+- データベース: Supabase
+- デプロイ: Vercel
+- その他: Git/GitHub
+
+## 主要機能
+
+### 管理機能
+
+- **LLM による記事生成アシスト**
+- **問題の自動生成**
+
+### ユーザー機能
+
+- **難易度別記事表示**: ユーザーの知識理解に合わせた記事の難易度調整
+- **インタラクティブな単語学習**: クリックで単語の意味を確認可能
+- **品詞による色分け**: 名詞、動詞、修飾語を視覚的に区別
+- **和訳サポート**: 必要に応じて和訳を表示/非表示
+- **フィードバックシステム**: 記事の難易度評価と学習進捗管理
+- **レッスン形式**: 段階的な学習をサポート
+
+## 技術的な特徴
+
+- **モダンなアーキテクチャ**: Next.js App Router を活用した最新のウェブ開発
+- **スケーラブルなデータベース設計**: Supabase によるバックエンドの負担の軽減
+- **AI 統合**: LLM を活用した記事生成と難易度調整
+
+## 開発環境セットアップ
 
 ```bash
+# 依存関係のインストール
+npm install
+# または
+yarn install
+# または
+pnpm install
+# または
+bun install
+
+# 開発サーバーの起動
 npm run dev
-# or
+# または
 yarn dev
-# or
+# または
 pnpm dev
-# or
+# または
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+アプリケーションは [http://localhost:3000](http://localhost:3000) で確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## プロジェクトの成果
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 1 ヶ月での MVP 開発完了
+- ユーザーフィードバックに基づく継続的な改善
+- スケーラブルなデータベース設計の実現
+- パフォーマンス最適化による高速な読み込み
 
-## Learn More
+## 今後の展望
 
-To learn more about Next.js, take a look at the following resources:
+- ジャンル別ニュース提供の実装
+- 復習テスト機能の追加
+- パーソナライズされた学習体験の強化
+- 高難度単語の AI による言い換え機能
+- 学習進捗の可視化と分析機能
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 参考リンク
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Next.js GitHub repository](https://github.com/vercel/next.js)
