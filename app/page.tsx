@@ -4,7 +4,7 @@ import Link from "next/link";
 import NewsCard from '@/components/NewsCard'
 import PromptInput from '@/components/propmt_input'
 import TestComponent from '@/components/TestComponent'
-
+import Topbar from '@/components/Topbar'
 import './globals.css';
 
 export const metadata: Metadata = {
