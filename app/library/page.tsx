@@ -2,22 +2,10 @@ import { redirect } from "next/navigation";
 import NewsCard from "@/components/NewsCard";
 import { ArticlePreview } from "@/types/articles";
 import { Suspense } from "react";
-
-async function getArticles(): Promise<ArticlePreview[]> {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/articles`);
-    const data = await response.json();
-    console.log('##data / library:', data);
-    return data.data;
-
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    return [];
-  }
-}
+import { getArticlesPreview } from "@/features/articles/getArticlesPreview";
 
 export default async function Library() {
-  const articleList: ArticlePreview[] = await getArticles()
+  const articleList: ArticlePreview[] = await getArticlesPreview()
 
   return (
     <div className="

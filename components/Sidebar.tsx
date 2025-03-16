@@ -1,7 +1,9 @@
 'use client';
-import { usePathname } from 'next/navigation';
-import SidebarButton from './SidebarButton';
 import Link from 'next/link';
+import { useSidebar } from '@/providers/SidebarContext';
+import ActionButton from './ActionButton';
+import NavigationButton from './NavigationButton';
+
 interface NavItem {
     name: string;
     href: string;
@@ -10,16 +12,8 @@ interface NavItem {
 }
 
 const navigation: NavItem[] = [
-    {
-        name: 'ニュースフィード',
-        href: '/',
-        icon: '🏠',
-    },
-    {
-        name: 'ライブラリー',
-        href: '/library',
-        icon: '📚',
-    },
+    {name: 'ホーム', href: '/', icon: '🏠'},
+    {name: 'ライブラリ', href: '/library', icon: '📚'},
     {
         name: '設定',
         href: '/info',
@@ -31,30 +25,46 @@ const navigation: NavItem[] = [
     },
 ];
 
-function NavItem({ item, level = 0 }: { item: NavItem; level?: number }) {
-    const pathname = usePathname();
+function NavItem({ item }: { item: NavItem }) {
+    const { isOpen } = useSidebar();
 
     return (
         <li>
-            <div className="flex flex-col">
-            <SidebarButton
+            <NavigationButton
                 icon={item.icon}
                 name={item.name}
                 href={item.href}
+                variant={isOpen ? 'with-text' : 'without-text'}
             />
-            </div>
         </li>
     );
 }
 
 export default function Sidebar() {
+    const { isOpen, toggleSidebar } = useSidebar();
+
     return (
-        <nav className="w-64 bg-gray-100 h-screen p-4">
-            <Link href="/">
-                <div className="flex pb-4 pl-2 pt-2">
-                    <span className="text-2xl font-bold text-yellow-500">Pattto</span>
-                </div>
-            </Link>
+        <nav className={` flex flex-col bg-white h-screen p-2 border-r border-gray-200 transition-all duration-300 ${
+            isOpen ? 'w-64' : 'w-22'
+        }`}>
+            <div className={`flex flex-row m-2 mb-4 ${isOpen ? 'justify-between' : 'justify-center'}`}>
+                {isOpen && (
+                <Link href="/">
+                    <div className="flex">
+                        
+                        <span className={`text-3xl font-bold text-yellow-500`}>
+                            Pattto
+                        </span>
+                    </div>
+                </Link>
+                )}
+                <ActionButton 
+                    icon={isOpen ? '⏮️' : '⏭️'} 
+                    variant="normal" 
+                    onClick={toggleSidebar}
+                    className="h-10 w-10 p-0 flex items-center justify-center"
+                />
+            </div>
             <ul className="space-y-2">
                 {navigation.map((item) => (
                     <NavItem key={item.href} item={item} />
