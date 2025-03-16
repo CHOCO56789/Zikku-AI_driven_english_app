@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useSidebar } from '@/app/context/SidebarContext';
+import { useSidebar } from '@/providers/SidebarContext';
 import ActionButton from './ActionButton';
 import NavigationButton from './NavigationButton';
 

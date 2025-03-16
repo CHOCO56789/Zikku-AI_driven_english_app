@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from '@/components/Sidebar';
 import Topbar from '@/components/Topbar';
-import { SidebarProvider } from '@/app/context/SidebarContext';
+import { SidebarProvider } from '@/providers/SidebarContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SidebarProvider>
           <div className="flex">
             <Sidebar />
-            <main className="flex-1 p-4 transition-all duration-700">
+            <main className="flex-1 p-4 transition-all duration-300">
               {children}
             </main>
           </div> 

@@ -1,17 +1,6 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/types/articles";
-
-async function getArticleData(id: string): Promise<Article> {
-  try {
-    console.log('##id:', id);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/articles/${id}`)
-    const data = await response.json()
-    return data.data;
-  } catch (error) {
-    console.error('Error fetching article data:', error);
-    throw error;
-  }
-}
+import { getArticle } from "@/features/articles/getArticle";
 
 export default async function ArticlePage({ 
   params 
@@ -19,8 +8,8 @@ export default async function ArticlePage({
   params: Promise<{ id: string }> 
 }) {
   const resolvedParams = await params;
-  const article: Article = await getArticleData(resolvedParams.id);
-  console.log('##article:', article);
+  const article = await getArticle(resolvedParams.id);
+  
   // 記事が見つからない場合は404ページを表示
   if (!article) {
     notFound();
@@ -28,7 +17,6 @@ export default async function ArticlePage({
 
   return (
     <div className="max-w-6xl w-full mx-auto">
-        
       <div>
         <div className="relative h-64 w-full rounded-lg shadow-lg overflow-hidden">
           <img 
