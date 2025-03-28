@@ -1,5 +1,8 @@
 'use client';
 import { useRef, useEffect ,useState} from 'react';
+import Link from 'next/link';
+import ActionButton from './ActionButton';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function PromptInput() {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -28,6 +31,7 @@ export default function PromptInput() {
         ">
             <textarea 
                 ref={textareaRef}
+                value={inputText}
                 placeholder="記事の内容を入力してください" 
                 onChange={handleInputChange}
                 className="
@@ -39,12 +43,24 @@ export default function PromptInput() {
                     p-2
                     rounded-md
                     border-gray-200
+                    focus:outline-none
                 "
             
             />
             <div className="flex justify-end">
-                <button/>
-                <button className="bg-yellow-500 text-white p-2 rounded-md">送信</button>
+                <Link
+                    href={{
+                        pathname: '/lab',
+                        query: { prompt: inputText }
+                    }}
+                >
+                    <ActionButton 
+                        variant="normal-rounded" 
+                        disabled={!inputText.trim()}
+                    >
+                        <ArrowRightIcon className="size-5" />
+                    </ActionButton>
+                </Link>
             </div>
         </div>
     )

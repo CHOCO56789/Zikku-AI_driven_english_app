@@ -33,6 +33,7 @@ export async function getArticle(id: string): Promise<Article | null> {
       .from('articles')
       .select('*')
       .eq('article_id', id)
+      .eq('status', 'publish')
       .single();
 
     if (error) {

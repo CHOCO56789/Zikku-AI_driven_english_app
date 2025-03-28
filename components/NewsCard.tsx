@@ -2,9 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArticlePreview } from '@/types/articles'
 
-export default function NewsCard({ id , imageUrl, title, description, author , createdAt}: ArticlePreview) {
+export default function NewsCard({ id , imageUrl, title, description, author , tags , createdAt}: ArticlePreview) {
     const formattedDate = new Date(createdAt).toLocaleDateString('ja-JP', {
-        year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         hour: '2-digit',
@@ -29,17 +28,21 @@ export default function NewsCard({ id , imageUrl, title, description, author , c
                     {description}
                 </p>
                 <div className="flex flex-row justify-between">
-                    <div className="flex flex-row">
-                        <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                    {/* ユーザーアイコンを表示する場合 */}
-                                <div className="h-8 w-8 rounded-full bg-gray-200" />
-                            </div>
-                            <div className="ml-3">
-                                <p className="text-sm text-gray-500">{author}</p>
-                            </div>
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                            <Image src="/images/authorIcon32*32.jpg" alt="Author Icon" width={32} height={32} className="h-8 w-8 rounded-full bg-gray-200"/>
+                        </div>
+                        <div className="ml-3">
+                            <p className="text-sm text-gray-500">{author}</p>
                         </div>
                     </div>
+                    {/* <div className="flex flex-row overflow-x-auto">
+                        {tags.map((tag) => (
+                            <div className="ml-3 bg-gray-100 rounded-full px-2 py-1 whitespace-nowrap justify-center">
+                                <p className="text-sm text-gray-500">{tag}</p>
+                            </div>
+                        ))}
+                    </div> */}
                     <div className="flex items-center">
                         {formattedDate}
                     </div>

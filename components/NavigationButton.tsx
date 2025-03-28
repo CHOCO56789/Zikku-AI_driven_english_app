@@ -5,41 +5,29 @@ interface NavigationButtonProps {
     name: string;
     href: string;
     variant: 'with-text' | 'without-text';
+    isActive?: boolean;
 }
 
-export default function NavigationButton(
-    { icon, name, href, variant }: NavigationButtonProps) {
-    if (variant === 'with-text') {
-    return (
-        <>
-        <div className="flex flex-col">
-            <Link href={href} className="flex items-center p-2 rounded-lg hover:bg-gray-100 border border-gray-200">
-                <span className="inline-flex w-10 h-10 items-center justify-center bg-white rounded-lg">
-                    <span className="text-2xl">
-                    {icon}
-                    </span>
-                </span>
-                <span className="text-lg pl-4">{name}</span>
-            </Link>
-        </div>  
-        </>   
-    )
-    } else {
-    return (
-        <>
-        <div className="flex flex-col">
-            <Link href={href} className="flex flex-col items-center p-2 pb-1  rounded-lg hover:bg-gray-100 border border-gray-200">
-                <span className="inline-flex w-10 h-10 items-center justify-center bg-white rounded-lg mb-1">
-                    <span className="text-2xl">
-                    {icon}
-                    </span>
-                </span>
-                <span className="text-[10px]">{name}</span>
-            </Link>
-            
-        </div>  
-        </>   
-    )
-    }
+export default function NavigationButton({ icon, name, href, variant, isActive }: NavigationButtonProps) {
+    const baseClasses = 'flex items-center p-2 rounded-lg transition-colors duration-200 border-2';
     
+    // アクティブ状態に応じてスタイルを変更
+    const activeClasses = isActive 
+        ? 'bg-yellow-100 text-yellow-600 border-yellow-300' 
+        : 'hover:bg-gray-100 border-transparent';
+    
+    const variantClasses = variant === 'with-text' 
+        ? 'w-full gap-3'
+        : 'w-12 h-12';
+
+    return (
+        <Link href={href}>
+            <div className={`${baseClasses} ${activeClasses} ${variantClasses}`}>
+                <span className="text-2xl inline-flex w-10 h-10 items-center justify-center">{icon}</span>
+                {variant === 'with-text' && (
+                    <span className="text-0.5xl font-medium">{name}</span>
+                )}
+            </div>
+        </Link>
+    );
 }

@@ -5,6 +5,7 @@ export interface ArticlePreview {
     description: string;
     imageUrl: string;
     author: string;
+    tags: string[];
     createdAt: string;
   }
   

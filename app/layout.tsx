@@ -27,9 +27,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SidebarProvider>
-          <div className="flex">
-            <Sidebar />
-            <main className="flex-1 p-4 transition-all duration-300">
+          <div className="flex h-screen overflow-hidden">
+            <div className="sticky top-0 h-screen">
+              <Sidebar />
+            </div>
+            <main className="flex-1 p-4 transition-all duration-300 overflow-y-auto">
               {children}
             </main>
           </div> 

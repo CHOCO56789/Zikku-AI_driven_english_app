@@ -1,10 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import NewsCard from '@/components/NewsCard'
-import PromptInput from '@/components/propmt_input'
+import PromptInput from '@/components/PromptInput'
 import TestComponent from '@/components/TestComponent'
-import Topbar from '@/components/Topbar'
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -25,7 +23,8 @@ export default async function Page() {
         flex flex-col gap-4">
       <h1 className="text-3xl pb-8">どんな記事を作成しますか？</h1>
       <PromptInput />
-      <TestComponent />
+      
+      {/* <TestComponent /> */}
     </div>
   );
 } 
