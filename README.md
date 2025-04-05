@@ -14,11 +14,11 @@ Zikku は、英語学習者のための AI 駆動型ニュースリーディン�
 
 ### 技術スタック
 
-- フロントエンド: Next.js, TypeScript
-- バックエンド: Next.js API Routes
-- データベース: Supabase
-- デプロイ: Vercel
-- その他: Git/GitHub
+フロントエンド: Next.js, Tailwind CSS
+バックエンド: Node.js/TypeScript
+データベース: PostgreSQL
+AI統合: OpenAI API
+インフラ: Vercel, Supabase
 
 ## 主要機能
 
