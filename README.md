@@ -46,29 +46,6 @@ AI統合: OpenAI API
 - **スケーラブルなデータベース設計**: Supabase によるバックエンドの負担の軽減
 - **AI 統合**: LLM を活用した記事生成と難易度調整
 
-## 開発環境セットアップ
-
-```bash
-# 依存関係のインストール
-npm install
-# または
-yarn install
-# または
-pnpm install
-# または
-bun install
-
-# 開発サーバーの起動
-npm run dev
-# または
-yarn dev
-# または
-pnpm dev
-# または
-bun dev
-```
-
-アプリケーションは [http://localhost:3000](http://localhost:3000) で確認できます。
 
 ## プロジェクトの成果
 
