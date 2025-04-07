@@ -1,4 +1,9 @@
 # 開発中
+<img width="979" alt="image" src="https://github.com/user-attachments/assets/b776b72e-3fc5-46c0-a9b9-18f942736212" />
+<img width="1023" alt="image" src="https://github.com/user-attachments/assets/cd58a010-d5f2-45f2-bc11-61713f150ba9" />
+<img width="1023" alt="image" src="https://github.com/user-attachments/assets/4ab4510b-d900-4cb5-9c72-e87f6a918ca4" />
+
+
 # Zikku - AI 駆動型英語ニュースリーディングアプリ
 
 ## プロジェクトのきっかけ
